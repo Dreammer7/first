@@ -1,0 +1,26 @@
+from bluetooth import *
+from kivy.app import App
+from kivy.core.window import Window
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.widget import Widget
+
+class main_class(Widget):
+	def text(self):
+		box = BoxLayout()
+		nearby_devices = discover_devices(lookup_names = True)
+		text_bluetooth = Label(text=str(nearby_devices))
+		box.add_widget(text_bluetooth)
+		return box
+class Niko(App):
+	def build(self):	
+		return main_class.text(self)
+
+
+
+
+
+if __name__ == "__main__":
+	app = Niko()
+	app.run()
+
